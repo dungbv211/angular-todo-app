@@ -42,7 +42,7 @@ export class LoginPage implements OnInit {
   constructor(private apiService: ApiService, private router: Router) {}
   ngOnInit(): void {}
   onSubmit() {
-    this.apiService.login(this.form.value).subscribe((data: any) => {
+    this.apiService.signIn(this.form.value).subscribe((data: any) => {
       localStorage.setItem(
         'currentUser',
         JSON.stringify({ token: data.accessToken })

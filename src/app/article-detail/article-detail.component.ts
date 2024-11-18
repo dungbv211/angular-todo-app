@@ -19,6 +19,6 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   fetchCategories() {
-    this.categories$ = this.apiService.categories();
+    this.categories$ = this.apiService.getBuckets();
   }
 }
