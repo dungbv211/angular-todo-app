@@ -1,0 +1,22 @@
+<div class="tab-header flex gap-3">
+  <div *ngFor="let tab of tabPanelList; index as idx" (click)="selectItem(idx)">
+    {{tab.title}}
+  </div>
+</div>
+
+<div class="tab-body">
+  <ng-container *ngFor="let tab of tabPanelList; index as idx">
+    <div *ngIf="idx === tabActiveIndex">{{tab.Content}}</div>
+  </ng-container>
+</div>
+<div>
+  <ng-container *ngFor="let user of Users | isAdult; index as idx">
+    <div>{{user.name}}</div>
+  </ng-container>
+</div>
+
+<div>
+  <ng-container *ngFor="let user of Users; index as idx">
+    <div>{{user.name}}</div>
+  </ng-container>
+</div>
