@@ -33,9 +33,9 @@ export class loggingInterceptor implements HttpInterceptor {
           return throwError(error);
         })
       );
-    } else {
-      this.router.navigate(['/login']);
-      return next.handle(req);
     }
+
+    this.router.navigate(['/login']);
+    return next.handle(req);
   }
 }

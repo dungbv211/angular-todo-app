@@ -13,9 +13,9 @@
         matInput
         name="password"
       />
-      <!-- <span class="text-4xl mb-10"
-        >Post Bucket {{ categories$ | async | json }}</span
-      > -->
+      <span class="text-4xl mb-10"
+        >Post Bucket {{ (categories | async |json) }}</span
+      >
       <button (ng-click)="onSubmit()" type="submit">Login</button>
     </div>
   </form>

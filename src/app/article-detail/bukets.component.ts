@@ -16,7 +16,7 @@ export class ArticleDetailComponent implements OnInit {
     title: new FormControl('test-titleas'),
     public: new FormControl(true),
   });
-  categories$: Observable<any> | undefined;
+  categories: Observable<any> | undefined;
   apiService = inject(ApiService);
   ngOnInit() {
     this.fetchCategories();
@@ -26,6 +26,6 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   fetchCategories() {
-    this.categories$ = this.apiService.getBuckets();
+    this.categories = this.apiService.getBuckets();
   }
 }

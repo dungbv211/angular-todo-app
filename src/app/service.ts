@@ -35,10 +35,10 @@ export class ApiService implements CanActivate {
     }
   }
   private getHeaders(): HttpHeaders {
-    const accessToken = localStorage.getItem('access_Token');
+    const accessToken = JSON.parse(localStorage.getItem('access_Token') || '{}') || null
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken?.replace(/"/g, '')}`,
+      Authorization: `Bearer ${accessToken}`,
     });
     return headers;
   }

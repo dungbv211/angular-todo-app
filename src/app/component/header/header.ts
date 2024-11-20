@@ -4,11 +4,12 @@ import { ElementInjectComponent } from '../../element/element-inject/element-inj
 @Component({
   selector: 'header-app',
   standalone: true,
-  template: `<div>this is header of my app</div> <button (ng-click)="onSubmit()">log out</button><app-element-inject>header</app-element-inject>`,
+  template: `<div>this is header of my app</div> <button (click)="onSubmit()">log out</button><app-element-inject>header</app-element-inject>`,
   imports: [ElementInjectComponent],
 })
 export class HeaderApp {
   onSubmit() {
     localStorage.removeItem('access_Token');
+    location.reload();
   }
 }
