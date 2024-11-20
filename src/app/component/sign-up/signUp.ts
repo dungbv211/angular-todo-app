@@ -1,20 +1,20 @@
+import { TextFieldModule } from '@angular/cdk/text-field';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
-import { TextFieldModule } from '@angular/cdk/text-field';
-import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn } from '@angular/forms';
-import { ApiService } from '../../service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth.service';
+import { ApiService } from '../../service';
+
 
 @Component({
-  selector: 'login-page',
+  selector: 'sign-up',
   standalone: true,
-  templateUrl: './LoginPage.html',
+  templateUrl: './signUp.html',
   providers: [{ provide: AuthService, useClass: AuthService }],
   imports: [
     ReactiveFormsModule,
@@ -26,8 +26,9 @@ import { AuthService } from '../../auth.service';
     MatTabsModule,
   ],
 })
-export class LoginPage implements OnInit {
+export class SignUpPage implements OnInit {
   form = new FormGroup({
+    username: new FormControl(''),
     email: new FormControl('', [
       Validators.required,
       Validators.minLength(4),
@@ -42,11 +43,14 @@ export class LoginPage implements OnInit {
   constructor(private apiService: ApiService, private router: Router) {}
   ngOnInit(): void {}
   onSubmit() {
-    this.apiService.signIn(this.form.value).subscribe((data: any) => {
-      localStorage.setItem('access_Token', JSON.stringify(data.access_token));
-      this.authService.updateUser(data.user);
-    });
-    this.authService.setIsLogin(true);
-    this.router.navigate(['article']);
+    this.apiService.signUp(this.form.value).subscribe(
+      (data) => {
+        console.log('Sign-up successful. Status:', data.status);
+        // this.router.navigate(['login']);
+      },
+      (error) => {
+        console.error('Sign-up failed:', error);
+      }
+    );
   }
 }

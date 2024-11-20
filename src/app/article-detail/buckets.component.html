@@ -1,0 +1,22 @@
+<div class="flex justify-center w-full">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="w-[500px] mx-auto"
+    #formDir="ngForm"
+  >
+    <div class="flex flex-col justify-center items-center">
+      <input formControlName="title" matInput name="email" />
+      <input
+        type="checkbox"
+        formControlName="public"
+        matInput
+        name="password"
+      />
+      <!-- <span class="text-4xl mb-10"
+        >Post Bucket {{ categories$ | async | json }}</span
+      > -->
+      <button (ng-click)="onSubmit()" type="submit">Login</button>
+    </div>
+  </form>
+</div>

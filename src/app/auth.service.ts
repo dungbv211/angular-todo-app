@@ -16,7 +16,7 @@ type user = {
 export class AuthService {
   user$ = new BehaviorSubject<user | null>(null);
   accessToken = new BehaviorSubject<string | null>(
-    JSON.parse(localStorage.getItem('currentUser') || '{}')?.token || null
+    JSON.parse(localStorage.getItem('access_Token') || '{}')?.token || null
   );
   isLogin$ = false;
   setIsLogin(isLogin: boolean) {
