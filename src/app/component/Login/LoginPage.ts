@@ -39,7 +39,8 @@ export class LoginPage implements OnInit {
     ]),
   });
   authService = inject(AuthService);
-  constructor(private apiService: ApiService, private router: Router) {}
+  apiService = inject(ApiService);
+  router = inject(Router);
   ngOnInit(): void {}
   onSubmit() {
     this.apiService.signIn(this.form.value).subscribe((data: any) => {

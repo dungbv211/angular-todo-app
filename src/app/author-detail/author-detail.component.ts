@@ -26,7 +26,6 @@ interface Author {
 export class AuthorDetailComponent implements OnInit {
   @Input() author!: Author;
   @Output() deleteAuthor = new EventEmitter<Author>();
-  constructor() {}
   ngOnInit() {}
 
   handleDelete() {

@@ -4,7 +4,7 @@ import { ProfilePage } from './component/Profile/ProfilePage';
 import { AuthorListComponent } from './author-list/author-list.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { TabGroupComponent } from './component/tabs/tab-group';
-import { ArticleDetailComponent } from './article-detail/bukets.component';
+import { ArticleDetailComponent } from './component/buckets/bukets.component';
 import { SignUpPage } from './component/sign-up/signUp';
 
 export const routes: Routes = [
@@ -18,7 +18,11 @@ export const routes: Routes = [
     path: 'create-app',
     component: ProfilePage,
   },
-  { path: 'author', component: AuthorListComponent },
+  {
+    path: 'author',
+    component: AuthorListComponent,
+    children: [{ path: 'user', component: TabGroupComponent }],
+  },
   { path: 'tabs', component: TabGroupComponent },
   { path: 'article', component: ArticleDetailComponent },
 ];

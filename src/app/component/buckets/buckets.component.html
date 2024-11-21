@@ -1,0 +1,30 @@
+<div class="flex justify-center w-full">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="w-[500px] mx-auto"
+    #formDir="ngForm"
+  >
+    <div class="flex flex-col justify-center items-center">
+      <p class="text-4xl mb-10">buckets</p>
+      <mat-form-field class="w-full">
+        <mat-label>title</mat-label>
+        <input formControlName="title" matInput name="email" />
+      </mat-form-field>
+      <mat-label>public</mat-label>
+      <section class="example-section">
+        <mat-checkbox class="example-margin" formControlName="public">
+        </mat-checkbox>
+      </section>
+      <input type="text" formControlName="public" matInput name="public" />
+      <!-- <span class="text-4xl mb-10"
+        >Post Bucket {{ categories | async | json }}</span
+      > -->
+      <!-- {{ categories | async | json }} -->
+      <div *ngFor="let category of categories | async">
+        {{ category.data.userId }}
+      </div>
+      <button type="submit">Login</button>
+    </div>
+  </form>
+</div>
